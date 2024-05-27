@@ -3,49 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPhone Interface</title>
+    <title>Traffic Lights</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
-        #container {
-            margin-top: 50px;
-        }
-        .button {
-            padding: 10px 20px;
-            font-size: 18px;
+        .light {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
             margin: 10px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
+            border: 2px solid black;
         }
-        .button:hover {
-            background-color: #0056b3;
-        }
+        .red { background-color: red; }
+        .yellow { background-color: yellow; }
+        .green { background-color: green; }
     </style>
 </head>
 <body>
-    <div id="container">
-        <h1>iPhone Interface</h1>
-        <div id="count">Count: 0</div>
-        <button class="button" onclick="incrementCount()">Increment Count</button>
-        <button class="button" onclick="showAlert()">Show Alert</button>
+    <div class="container">
+        <div id="red" class="light red"></div>
+        <div id="yellow" class="light"></div>
+        <div id="green" class="light"></div>
+        <button onclick="changeLights()">Change Lights</button>
     </div>
 
     <script>
-        let count = 0;
-        
-        function incrementCount() {
-            count++;
-            document.getElementById('count').innerText = 'Count: ' + count;
-        }
+        const lights = document.querySelectorAll('.light');
+        let currentLightIndex = 0;
 
-        function showAlert() {
-            alert('You pressed the button!');
+        function changeLights() {
+            lights[currentLightIndex].classList.remove('red', 'yellow', 'green');
+
+            currentLightIndex = (currentLightIndex + 1) % 3;
+
+            if (currentLightIndex === 0) {
+                lights[currentLightIndex].classList.add('red');
+            } else if (currentLightIndex === 1) {
+                lights[currentLightIndex].classList.add('yellow');
+            } else {
+                lights[currentLightIndex].classList.add('green');
+            }
         }
     </script>
 </body>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        #container {
+            margin-top: 50px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>iPhone Interface</h1>
+        <div id="count">Count: 0</div>
+        <button class="button" onclick="incrementCount()">Increment Count</button>
+        <button class="button" onclick="showAlert()">Show Alert</button>
+    </div>
+
+    <script>
+        let count = 0;
+        
+        function incrementCount() {
+            count++;
+            document.getElementById('count').innerText = 'Count: ' + count;
+        }
+
+        function showAlert() {
+            alert('You pressed the button!');
+        }
+    </script>
+</body>
+</html>
